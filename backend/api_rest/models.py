@@ -1,6 +1,6 @@
 from django.db import models
 
-# Criando os modelos
+# Criando os modelos makemigrations is a Django management command used to create new database migration files based on changes detected in your Django models.
 
 class Tipo(models.Model):
     # codigo, nome
