@@ -9,6 +9,12 @@ const Header = () => {
                 Pokédex
             </a>
         </h1>
+
+        <h4>
+            <a className='header__link' href="/Tipos">
+                Tipos
+            </a>
+        </h4>
     </header>
   )
 }
