@@ -54,3 +54,12 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 admin 123
+
+# Frontend
+```
+npm create vite@latest
+```
+
+```
+npm run dev
+```

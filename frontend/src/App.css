@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+@font-face {
+  font-family: "Pokemon";
+  src: url(/public/Pokemon\ Solid.ttf);
+}
+
+
+body {
+    background-color: #e0e0e0;
+    color: black;
+    font-family: "Georgia";
+    line-height: 120%;
+}
+
+header {
+  font-family: "Pokemon";
+  color: white;
+  background-color:rgb(136, 23, 23);
+  padding: 30px 40px;
+  border-bottom: 10px solid black ;
+  margin-bottom: 10px;
+  height: 100px;
+}
+
+
+.header__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* .Pokemon__item {
+  display: flex;
+} */

@@ -45,6 +45,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # middleware adicionado, recomendado pelo docs ser o primeiro adicionado
+    "corsheaders.middleware.CorsMiddleware",
+    
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -53,8 +56,11 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     
-    # middleware adicionado
-    "corsheaders.middleware.CorsMiddleware",
+]
+
+# aqui adicionamos uma lista de origns que sao autorizadas a fazerem HTTP requests cross-site
+CORS_ALLOWED_ORIGINS = [
+    
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -130,4 +136,3 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ORIGIN_ALLOW_ALL = True

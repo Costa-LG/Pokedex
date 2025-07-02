@@ -12,14 +12,14 @@ class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
     
-    def create(self, request):
-        pass
+    # def create(self, request):
+    #     pass
 
-    def update(self, request, pk=None):
-        pass
+    # def update(self, request, pk=None):
+    #     pass
 
-    def destroy(self, request, pk=None):
-        pass
+    # def destroy(self, request, pk=None):
+    #     pass
     
 
 class TipoViewSet(viewsets.ModelViewSet):
