@@ -12,6 +12,20 @@ class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
     
+    def get(self, request):
+        nome = request.GET.get("nome")
+        tipo = request.GET.get("tipo_primario")
+        
+        Pokemon = Pokemon.objects.all
+        
+        if nome:
+            pokemons = pokemons.filter(nome__icontains=nome)
+        if tipo:
+            pokemons = pokemons.filter(tipo_primario=tipo)
+
+        serializer = PokemonSerializer(pokemons, many=True)
+        
+        return Response(serializer.data)
     # def create(self, request):
     #     pass
 

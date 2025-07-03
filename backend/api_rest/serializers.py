@@ -8,10 +8,10 @@ class TipoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PokemonSerializer(serializers.ModelSerializer):
-    # tipo_primario = TipoSerializer(read_only=True)
-    # tipo_secundario = TipoSerializer(read_only=True)
+    tipo_primario = serializers.CharField(source="tipo_primario.nome", read_only=True)
+    tipo_secundario = serializers.CharField(source="tipo_secundario.nome", read_only=True)
     
     class Meta:
         model = Pokemon
-        fields = '__all__'
+        fields = ['codigo', 'nome', 'tipo_primario', 'tipo_secundario']
         
