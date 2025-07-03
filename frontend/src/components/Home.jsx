@@ -1,15 +1,31 @@
-import React from 'react'
-import data from "../../database/dados_iniciais.json"
+import {React, useEffect, useState} from 'react'
 import ItemList from './ItemList'
 import '../App.css'
 import SearchField from './SearchField'
-
+import AxiosInstance from './Axios'
 
 const Home = () => {
+  const [myData, setMyData] = useState()
+  const [loading, setLoading] = useState(true)
+
+  const GetData = () => {
+    AxiosInstance.get("pokemons/")
+      .then((res) => {
+        setMyData(res.data)
+        setLoading(false) 
+      })
+  }
+
+  useEffect(() => {
+    GetData();
+  }, []);
+
   return (
     <>
         <SearchField/>
-        <ItemList pokemons={data} />
+        {loading? <p>loading data...</p>:
+          <ItemList pokemons={myData} isPokemon={true}/>
+        }
     </>
   )
 }
