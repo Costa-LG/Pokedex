@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: "Pokemon";
-  src: url(/public/Pokemon\ Solid.ttf);
+  src: url("assets\Pokemon Solid.ttf");
 }
 
 
@@ -56,6 +56,7 @@ header {
   transition: transform 0.3s ease-in-out;
   font-size: larger;
   line-height: normal;
+  cursor: pointer;
 }
 
 .Pokemon__item:hover {

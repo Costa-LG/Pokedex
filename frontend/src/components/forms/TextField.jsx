@@ -11,9 +11,10 @@ export default function TextFields(props) {
       name = {name}
       control = {control}
       render = {({
-        field:{onChange, value},
-        fieldState:{error},
-        formState,
+      field:{onChange, value},
+      fieldState:{error},
+      formState,
+      
       }) => (
 
         <TextField
@@ -27,4 +28,3 @@ export default function TextFields(props) {
     />
   );
 }
-

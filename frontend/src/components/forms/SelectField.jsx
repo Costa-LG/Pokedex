@@ -11,13 +11,14 @@ const tipos = [
 ];
 
 export default function SelectFields(props) {
-  const {label, placeholder, name, control} = props
+  const {label, placeholder, name, options, control} = props
 
 
   return (
     <Controller
       name = {name}
       control = {control}
+      
       render = {({
         field:{onChange, value},
         fieldState:{error},
@@ -31,7 +32,7 @@ export default function SelectFields(props) {
           defaultValue=""
           helperText="Selecione o tipo"
         >
-          {tipos.map((option) => (
+          {options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
