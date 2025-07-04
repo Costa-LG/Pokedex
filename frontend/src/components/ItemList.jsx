@@ -4,7 +4,6 @@ import SingleItem from './SingleItem'
 
 
 const ItemList = ({ pokemons, isPokemon }) => {
-  console.log("alo")
   return (
     <div className='ItemListPokemon'>
       {

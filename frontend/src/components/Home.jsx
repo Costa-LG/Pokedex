@@ -5,27 +5,40 @@ import SearchField from './SearchField'
 import AxiosInstance from './Axios'
 
 const Home = () => {
-  const [myData, setMyData] = useState()
+  const [pokemonData, setPokemon] = useState()
   const [loading, setLoading] = useState(true)
 
-  const GetData = () => {
-    AxiosInstance.get("pokemons/")
-      .then((res) => {
-        setMyData(res.data)
+  // pegando os dados da API
+  const GetData = async (searchTerm='') => {
+    // criando o url e limpando o input da busca
+    const query = searchTerm.trim().toLowerCase();
+    const url = query ? `pokemons/?nome=${query}` : "pokemons";
+    const response = await AxiosInstance.get(url)
+    .then((res) => {
+        setPokemon(res.data)
         setLoading(false) 
       })
   }
 
+  // Use effect ira carregar os dados
   useEffect(() => {
+    // search term vazio por padrao, ira carregar todos os pokemons
     GetData();
   }, []);
 
+  const handleSearchTermChange = (searchTerm) => {
+    // chamando a api com um novo termo de busca
+    GetData(searchTerm)
+  }
+
+  if (loading) {
+    return <div>Carregando Pokemons ...</div>
+  }
+
   return (
     <>
-        <SearchField/>
-        {loading? <p>loading data...</p>:
-          <ItemList pokemons={myData} isPokemon={true}/>
-        }
+        <SearchField onSearchTermChange={handleSearchTermChange}/>
+        <ItemList pokemons={pokemonData} isPokemon={true}/>
     </>
   )
 }
