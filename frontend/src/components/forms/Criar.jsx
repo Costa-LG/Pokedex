@@ -14,12 +14,17 @@ const Criar = ({op, cr}) => {
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setPost(prevPost => ({
-            ...prevPost,
-            [name]: value,
-        }));
-    };
+    const { name, value } = e.target;
+    setPost(prevPost => {
+        const updatedPost = {
+        ...prevPost,
+        [name]: value,
+        };
+        console.log(updatedPost); 
+        return updatedPost;
+    });
+};
+
 
 
     const adicionarPokemon = async () => {
@@ -27,17 +32,15 @@ const Criar = ({op, cr}) => {
       const payload = {
         codigo: post.codigo,
         nome: post.nome,
-        tipo_primario: post.tipo_primario || null,
+        tipo_primario: post.tipo_primario,
         tipo_secundario: post.tipo_secundario || null,
       };
 
       const response = await axios.post('http://localhost:8000/pokemons/', payload);
       console.log('Pokemon criado:', response.data);
-
-      if (onCreation) {
-        onCreation(response.data);
+      if (cr) {
+        cr(response.data);
       }
-
       setPost({
         codigo: '', nome: '', tipo_primario: '', tipo_secundario: '',
       });
@@ -102,7 +105,7 @@ const Criar = ({op, cr}) => {
                     <em>-----------------</em>
                 </MenuItem>
                 {op?.map((tipo) => (
-                    <MenuItem key={tipo.nome} value={tipo.nome}>
+                    <MenuItem key={tipo.codigo} value={tipo.codigo}>
                     {tipo.nome.charAt(0).toUpperCase() + tipo.nome.slice(1)}
                 </MenuItem>
                 ))}

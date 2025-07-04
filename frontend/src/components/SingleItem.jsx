@@ -9,6 +9,7 @@ const SingleItem = ({
   tipo2,
   isPokemon,
   onDelete,
+  onEdition,
   listOptions = []  // lista de tipos (ex: [{codigo: 1, nome: 'fogo'}])
 }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -44,18 +45,23 @@ const SingleItem = ({
 
       const payload = isPokemon
         ? {
+            codigo: codigo,
             nome: editValues.nome,
             tipo_primario: getTipoCodigo(editValues.tipo1),
             tipo_secundario: editValues.tipo2 ? getTipoCodigo(editValues.tipo2) : null
           }
         : {
+            codigo: codigo,
             nome: editValues.nome
           };
-
+      console.log("Payload enviado para PUT:", payload);
       await AxiosInstance.put(`/${isPokemon ? 'pokemons' : 'tipos'}/${codigo}/`, payload);
       alert('Atualizado com sucesso!');
+      
       setIsEditing(false);
-    } catch (error) {
+      if (onEdition) onEdition(codigo);
+    } 
+    catch (error) {
       console.error(error);
       alert("Erro ao atualizar. Verifique o console.");
     }
