@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import TextFields from './forms/TextField';
 import SelectFields from './forms/SelectField';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const SearchField = ({onSearchTermChange}) => {
+const SearchField = ({onSearchTermChange, listOptions}) => {
   const { handleSubmit, reset, setValue, control, getValues } = useForm({
     defaultValues: {
       searchQuery: '',
@@ -12,24 +12,22 @@ const SearchField = ({onSearchTermChange}) => {
     }
   });
 
-  const HandleSearchBarSearch = (searchTerm) => {
-    if (onSearchTermChange){
-      onSearchTermChange(searchTerm);
+
+  const handleSearchBarSearch = () => {
+    const filtros = getValues(); // pega nome e tipo_primario
+    if (onSearchTermChange) {
+      onSearchTermChange(filtros); // envia objeto completo
     }
-  }
-    const HandleClearSearchBar = () => {
-        if (onSearchTermChange) {
-            onSearchTermChange(''); 
-        }
+  };
+    const handleClearSearchBar = () => {
+      reset(); // limpa os campos do form
+      if (onSearchTermChange) {
+        onSearchTermChange({ nome: '', tipo_primario: '' });
+      }
     };
 
 
 
-  const myOptions = [
-    { value: 'abra', label: 'Abra' },
-    { value: 'cadabra', label: 'Cadabra' },
-    { value: 'charm', label: 'Charm' },
-  ];
 
 
   return (
@@ -42,9 +40,9 @@ const SearchField = ({onSearchTermChange}) => {
           label="Buscar Pokemon"
           placeholder="digite o nome do Pokemon"
           // 'onSearch' chama handleSearchBarSearch a cada digitação
-          onSearch={(value) => HandleSearchBarSearch(value)}
+          onSearch={() => handleSearchBarSearch()}
           // onClear chama handleClearSearchBar
-          onClear={HandleClearSearchBar}
+          onClear={handleClearSearchBar}
           searchOnTyping={true}
         />
 
@@ -52,8 +50,15 @@ const SearchField = ({onSearchTermChange}) => {
           label="Tipo"
           placeholder="Escolha o tipo do Pokemon"
           name="tipo_primario"
-          options={myOptions}
+          options={[
+            { value: '', label: '----------------' },
+            ...(listOptions?.map((tipo) => ({
+              value: tipo.nome,
+              label: tipo.nome.charAt(0).toUpperCase() + tipo.nome.slice(1),
+            })) || [])
+          ]}
           control={control}
+          onSearch={() => handleSearchBarSearch()}
         />
       </div>
     </>

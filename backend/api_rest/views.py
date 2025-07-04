@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
-from django.http import HttpResponse
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from django.http import HttpResponse
+from django.db.models import Q
 from .serializers import *
 from .models import * 
 
@@ -21,7 +22,11 @@ class PokemonViewSet(viewsets.ModelViewSet):
         if nome:
             queryset = queryset.filter(nome__icontains=nome)
         if tipo:
-            queryset = queryset.filter(tipo_primario__nome__icontains=tipo)
+            queryset = queryset.filter(
+                Q(tipo_primario__nome__icontains=tipo) |
+                Q(tipo_secundario__nome__icontains=tipo) 
+            )
+
 
         return queryset
 

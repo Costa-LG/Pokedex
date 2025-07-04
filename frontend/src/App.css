@@ -88,3 +88,28 @@ header {
   justify-content: center;
   padding: 30px 40px;
 }
+
+.FormularioPokemon {
+  display:flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 30px 40px;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.BotaoCriar {
+  width: 400px;
+}
+
+.CaixaDeEntrada {
+  height:90%;
+}
+.invisivel {
+  display:none;
+}
+.buttonsCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

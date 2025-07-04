@@ -11,7 +11,7 @@ const tipos = [
 ];
 
 export default function SelectFields(props) {
-  const {label, placeholder, name, options, control} = props
+  const {label, placeholder, name, options, control, onSearch} = props
 
 
   return (
@@ -24,8 +24,13 @@ export default function SelectFields(props) {
         fieldState:{error},
         formState,
       }) => (
-
         <TextField
+          onChange={(e) =>{
+            onChange(e);
+            if (onSearch){
+              onSearch();
+            }
+          }}
           id="outlined-select-currency"
           select
           label = {label}
