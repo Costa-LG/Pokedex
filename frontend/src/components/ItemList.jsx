@@ -3,7 +3,7 @@ import SingleItem from './SingleItem'
 
 
 
-const ItemList = ({ pokemons, isPokemon, onDelete, onEdition, listOptions = [] }) => {
+const ItemList = ({ pokemons, isPokemon, onDelete, onUpdate, listOptions = [] }) => {
   return (
     <div className='ItemListPokemon'>
       {pokemons.map((pokemon) => (
@@ -15,7 +15,7 @@ const ItemList = ({ pokemons, isPokemon, onDelete, onEdition, listOptions = [] }
           tipo2={pokemon.tipo_secundario_nome}
           isPokemon={isPokemon}
           onDelete={onDelete}
-          onEdition={onEdition}
+          onUpdate={onUpdate} 
           listOptions={listOptions}
         />
       ))}

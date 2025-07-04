@@ -53,10 +53,13 @@ const Home = () => {
     setPokemon((prevList) => [...prevList, novoPokemon]);
   };
 
-  const handleOnEdit = (pokemonEditado) => {
-    setPokemon((prevList) => [...prevList, pokemonEditado]);
+  const handleUpdate = (pokemonAtualizado) => {
+  setPokemon(prevList =>
+    prevList.map(p =>
+      p.codigo === pokemonAtualizado.codigo ? pokemonAtualizado : p
+    )
+  );
   };
-
 
   if (loading) {
     return <div>Carregando Pokemons ...</div>
@@ -70,7 +73,7 @@ const Home = () => {
         pokemons={pokemonData}
         isPokemon={true}
         onDelete={handleDeleteFromList}
-        onEdtion={handleOnEdit}
+        onUpdate={handleUpdate} 
         listOptions={tiposData}
       />
     </>
