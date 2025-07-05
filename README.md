@@ -1,65 +1,70 @@
 # Pokedex
 
-O projeto sera realizado utilizando Django (Python 3.12.7) + React
+Este projeto é uma Pokédex para o professor Carvalho!
 
-Primeiros passos: 
-1. criar um ambiente virtual python
-2. criar um arquivo requirements.txt
+Nele foram utilizadas as seguintes tecnologias:
 
-```
-python -m venv venv
-venv\Scripts\activate
+- Django (Python 3.12.7)
+- Vite + React
+
+Onde para o backend, temos o seguinte schema para nossa database em SQLite
+
+´´´mermaid
+erDiagram
+    pokemons {
+        INT codigo
+        VARCHAR nome_pokemon
+    }
+    
+    tipos {
+        INT id
+        VARCHAR nome_tipo
+    }
+	
+    pokemons }o--|{ tipos : tem
+
+´´´
+
+## Setup
+
+O primeiro passo é clonar o repositório no diretório desejado
+´´´terminal
+git clone https://github.com/Costa-LG/Pokedex.git
+´´´
+
+Precisamos utilizar dois terminais, um para hostear o backend enquanto outro será dedicado ao frontend.
+
+### Backend
+Primeiro mudamos o diretorio para a pasta backend
+´´´terminal
+cd backend
+´´´
+
+Para então criarmos nosso Python virtual enviroment
+```terminal
+python -m venv venv             # criando
+venv\Scripts\activate           # ativando no windows
+pip install -r requirements.txt # instalando os requerimentos no ambiente virtual
 ```
 
-```
-pip install django
-```
-
-```django commands
-makemigration
-migrate
-runserver
-startapp
-startproject
-```
-
-```
-django-admin startproject
-```
-
-criei .gitignore e adicionei o venv a ele
-
-```
+Podemos finalmente hostear o servidor local com
+´´´terminal
 python manage.py runserver
-```
-confirmou a instalacao bem sucedida do django
+´´´
 
-abrindo um novo terminal para programar e vermos o resultado em tempo real no server
-
+### Frontend
+Similarmente ao back, o primeiro passo é mudarmos o diretório
+```terminal
+cd frontend
 ```
-pip freeze > requirements.txt
+Com o Node previamente instalado, utilizamos
 ```
-manda os pacotes para o arquivo txt
-
+npm install # instalando node package manager
 ```
-pip install django djangorestframework requests django-cors-headers
-```
-
-```
-python manage.py makemigrations
-python manage.py migrate
-```
-
-```
-python manage.py createsuperuser
-```
-admin 123
-
-# Frontend
-```
-npm create vite@latest
-```
-
+Por fim rodamos o servidor local
 ```
 npm run dev
 ```
+
+## Video de Apresentação do Projeto
+
