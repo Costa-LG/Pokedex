@@ -67,5 +67,5 @@ Por fim rodamos o servidor local
 npm run dev
 ```
 
-## Video de Apresentação do Projeto
+## [Video de Apresentação do Projeto](https://youtu.be/vtAR-exKmV8)
 
