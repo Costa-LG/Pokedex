@@ -9,7 +9,7 @@ Nele foram utilizadas as seguintes tecnologias:
 
 Onde para o backend, temos o seguinte schema para nossa database em SQLite
 
-´´´mermaid
+```mermaid
 erDiagram
     pokemons {
         INT codigo
@@ -22,23 +22,24 @@ erDiagram
     }
 	
     pokemons }o--|{ tipos : tem
+```
 
-´´´
+
 
 ## Setup
 
 O primeiro passo é clonar o repositório no diretório desejado
-´´´terminal
+```terminal
 git clone https://github.com/Costa-LG/Pokedex.git
-´´´
+```
 
 Precisamos utilizar dois terminais, um para hostear o backend enquanto outro será dedicado ao frontend.
 
 ### Backend
 Primeiro mudamos o diretorio para a pasta backend
-´´´terminal
+```terminal
 cd backend
-´´´
+```
 
 Para então criarmos nosso Python virtual enviroment
 ```terminal
@@ -48,9 +49,9 @@ pip install -r requirements.txt # instalando os requerimentos no ambiente virtua
 ```
 
 Podemos finalmente hostear o servidor local com
-´´´terminal
+```terminal
 python manage.py runserver
-´´´
+```
 
 ### Frontend
 Similarmente ao back, o primeiro passo é mudarmos o diretório
